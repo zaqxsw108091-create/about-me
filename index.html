@@ -37,6 +37,17 @@
     padding: 20px 40px;
   }
 
+  .top-accent-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 999;
+    background: linear-gradient(90deg, var(--accent-game), var(--accent-drone), var(--accent-security));
+    pointer-events: none;
+  }
+
   .scroll-progress {
     position: fixed;
     top: 0;
@@ -599,6 +610,7 @@
 </head>
 <body>
 
+  <div class="top-accent-bar" aria-hidden="true"></div>
   <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-fill"></div></div>
 
   <header>
@@ -697,9 +709,9 @@
 
     </div>
 
-    <p class="section-label section-label-vibe">VIBE CODING</p>
-    <h2>바이브 코딩으로 만든 것들</h2>
-    <p class="vibe-intro">AI를 도구로 써서 기획부터 배포까지 직접 끝낸 프로젝트들입니다.</p>
+    <p class="section-label section-label-vibe">MORE PROJECTS</p>
+    <h2>더 만든 것들</h2>
+    <p class="vibe-intro">위 3개 외에도 같은 방식으로 계획하고 완성까지 끝낸 프로젝트들입니다.</p>
     <div class="vibe-row">
       <article class="vibe-card">
         <div class="vibe-card-head">
