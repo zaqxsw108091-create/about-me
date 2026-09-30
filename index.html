@@ -6,296 +6,184 @@
 <title>윤대영 소개</title>
 <link rel="icon" href="favicon.ico">
 <style>
-  * {
-    box-sizing: border-box;
+  :root {
+    --accent-game: #6b5b95;
+    --accent-drone: #3d5a80;
+    --accent-security: #293b5f;
+    --accent-vibe: #146b5c;
+    --bg: #fafaf8;
+    --card-bg: #faf9f6;
+    --text: #333;
+    --title: #222;
   }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
-
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; overflow-x: hidden; }
   body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     font-family: -apple-system, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-    color: #333;
-    background: #ffffff;
-    padding: 20px 40px;
+    color: var(--text);
+    background: var(--bg);
+    padding: 24px 40px 20px;
   }
 
+  /* 상단 3색 바 + 스크롤 진행바 */
+  .top-accent-bar {
+    position: fixed; top: 0; left: 0; width: 100%; height: 4px; z-index: 20;
+    background: linear-gradient(90deg, var(--accent-game), var(--accent-drone), var(--accent-security));
+  }
+  .scroll-progress {
+    position: fixed; top: 4px; left: 0; height: 3px; width: 0; z-index: 19;
+    background: var(--accent-vibe);
+    transition: width 0.1s linear;
+  }
+
+  /* 히어로 */
   header {
     flex: 0 0 auto;
+    padding: 6px 0 4px;
+    background-image: radial-gradient(rgba(41, 59, 95, 0.04) 1.2px, transparent 1.2px);
+    background-size: 18px 18px;
   }
+  header h1 { margin: 0 0 6px 0; font-size: clamp(20px, 2.4vw, 30px); color: var(--title); }
+  header p { margin: 0; font-size: clamp(13px, 1.2vw, 15px); max-width: 900px; line-height: 1.5; }
+  .contact-line { margin: 8px 0 0 0; font-size: clamp(12px, 1.1vw, 14px); }
+  a { color: #0645ad; }
 
-  header h1 {
-    margin: 0 0 6px 0;
-    font-size: clamp(20px, 2.4vw, 30px);
-    color: #222;
+  main { flex: 0 1 auto; display: block; margin-top: 14px; }
+  main h2, .more h2 { margin: 0 0 8px 0; font-size: clamp(16px, 1.8vw, 20px); color: var(--title); }
+  .eyebrow {
+    display: flex; align-items: center; gap: 8px; margin: 0 0 2px 0;
+    font-size: 11px; letter-spacing: 0.14em; font-weight: 700; color: var(--accent-vibe);
   }
+  .eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
 
-  header p {
-    margin: 0;
-    font-size: clamp(13px, 1.2vw, 15px);
-    color: #333;
-    max-width: 900px;
-    line-height: 1.4;
-  }
-
-  main {
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: column;
-    margin-top: 14px;
-  }
-
-  main h2 {
-    margin: 0 0 8px 0;
-    font-size: clamp(16px, 1.8vw, 20px);
-    color: #222;
-  }
-
-  .card-row {
-    flex: 1 1 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: start;
-    gap: 16px;
-  }
-
+  /* 3카드 */
+  .card-row { display: grid; grid-template-columns: repeat(3, 1fr); align-items: start; gap: 16px; }
   .card {
-    background: #fafafa;
+    background: var(--card-bg);
     border-radius: 12px;
+    border: 1px solid #ece9e1;
+    border-top: 3px solid var(--c);
     padding: 14px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 0;
-    overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    min-height: 0; overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
+  .card:hover, .card:focus-within { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(var(--c-rgb), 0.16); }
+  .game { --c: var(--accent-game); --c-rgb: 107, 91, 149; }
+  .drone { --c: var(--accent-drone); --c-rgb: 61, 90, 128; }
+  .security { --c: var(--accent-security); --c-rgb: 41, 59, 95; }
 
-  .character-wrap {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    flex: 0 0 auto;
-    transition: transform 0.4s ease;
-  }
-
-  .card.is-open .character-wrap {
-    transform: translate(-22px, -10px);
-  }
-
-  .character-spin {
-    display: inline-flex;
-    transition: transform 0.4s ease;
-  }
-
-  .card.is-open .character-spin {
-    transform: rotate(-10deg);
-  }
-
-  .card img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    mix-blend-mode: multiply;
-    flex: 0 0 auto;
-  }
-
+  .character-wrap { position: relative; display: inline-flex; align-items: center; flex: 0 0 auto; transition: transform 0.4s ease; }
+  .card.is-open .character-wrap { transform: translate(-22px, -10px); }
+  .character-spin { display: inline-flex; transition: transform 0.4s ease; }
+  .card.is-open .character-spin { transform: rotate(-10deg); }
+  .card img { width: 120px; height: 120px; object-fit: contain; mix-blend-mode: multiply; flex: 0 0 auto; }
   .speech-bubble {
-    position: absolute;
-    top: 12px;
-    left: 100%;
-    margin-left: 10px;
-    width: 130px;
-    background: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 6px 10px;
-    font-size: 11px;
-    line-height: 1.3;
-    color: #222;
-    text-align: left;
-    opacity: 0;
-    transform: scale(0.85);
+    position: absolute; top: 12px; left: 100%; margin-left: 10px; width: 130px;
+    background: #fff; border: 1px solid #ccc; border-radius: 10px; padding: 6px 10px;
+    font-size: 11px; line-height: 1.3; color: var(--title); text-align: left;
+    opacity: 0; transform: scale(0.85);
     transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
   }
-
-  .card.is-open .speech-bubble {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  .card h3 {
-    margin: 6px 0 8px 0;
-    font-size: clamp(15px, 1.5vw, 18px);
-    color: #222;
-    flex: 0 0 auto;
-  }
-
+  .card.is-open .speech-bubble { opacity: 1; transform: scale(1); }
+  .card h3 { margin: 6px 0 8px 0; font-size: clamp(15px, 1.5vw, 18px); color: var(--c); flex: 0 0 auto; }
   .guide-btn {
-    flex: 0 0 auto;
-    margin: 0 0 8px 0;
-    padding: 6px 16px;
-    font-size: clamp(12px, 1.1vw, 13px);
-    font-weight: 600;
-    font-family: inherit;
-    color: #222;
-    background: #ffffff;
-    border: 1px solid #ccc;
-    border-radius: 999px;
-    cursor: pointer;
+    flex: 0 0 auto; margin: 0 0 8px 0; padding: 6px 16px;
+    font-size: clamp(12px, 1.1vw, 13px); font-weight: 600; font-family: inherit;
+    color: var(--title); background: #fff; border: 1px solid #ccc; border-radius: 999px; cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
   }
+  .guide-btn:hover { background: #f0f0f0; border-color: var(--c); }
 
-  .guide-btn:hover {
-    background: #f0f0f0;
+  .details-wrapper, .acc-panel { display: grid; grid-template-rows: 0fr; width: 100%; transition: grid-template-rows 0.35s ease 0.15s; }
+  .details-wrapper.expanded, .acc-panel.expanded { grid-template-rows: 1fr; }
+  .details-inner, .acc-inner { overflow: hidden; min-height: 0; }
+
+  .card dl { margin: 0; text-align: left; width: 100%; }
+  .card dt { font-size: clamp(11px, 1vw, 12px); font-weight: 700; color: var(--title); margin: 6px 0 2px 0; }
+  .card dt:first-child { margin-top: 0; }
+  .card dd { margin: 0; font-size: clamp(12px, 1.1vw, 13px); line-height: 1.4; }
+  .source-list { margin: 0; padding: 0; list-style: none; }
+
+  /* 더 만든 것들 */
+  .more { margin-top: 28px; }
+  .more-intro { margin: 0 0 12px 0; font-size: clamp(13px, 1.2vw, 15px); }
+  .more-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: stretch; }
+  .more-card {
+    background: var(--card-bg); border: 1px solid #ddebe7; border-radius: 12px; padding: 14px 16px;
+    display: flex; flex-direction: column;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-
-  .details-wrapper {
-    display: grid;
-    grid-template-rows: 0fr;
-    width: 100%;
-    transition: grid-template-rows 0.35s ease 0.15s;
+  .more-card:hover, .more-card:focus-within { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(20, 107, 92, 0.16); }
+  .more-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .badge {
+    flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%;
+    background: #e3f0ec; color: var(--accent-vibe); display: grid; place-items: center;
   }
-
-  .details-wrapper.expanded {
-    grid-template-rows: 1fr;
+  .badge svg { width: 18px; height: 18px; }
+  .more-card h3 { margin: 0; font-size: clamp(14px, 1.3vw, 16px); color: var(--accent-vibe); }
+  .more-card dl { margin: 0; flex: 1 1 auto; }
+  .more-card dt { font-size: 12px; font-weight: 700; color: var(--title); margin: 8px 0 2px 0; }
+  .more-card dt:first-child { margin-top: 0; }
+  .more-card dd { margin: 0; font-size: 13px; line-height: 1.45; }
+  .more-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .link-btn {
+    display: inline-block; padding: 6px 14px; font-size: 13px; font-weight: 600;
+    color: var(--accent-vibe); background: #fff; border: 1px solid var(--accent-vibe);
+    border-radius: 999px; text-decoration: none;
   }
+  .link-btn:hover { background: var(--accent-vibe); color: #fff; }
 
-  .details-inner {
-    overflow: hidden;
-    min-height: 0;
+  /* 접이식 */
+  footer { flex: 0 0 auto; margin-top: 24px; display: flex; flex-direction: column; gap: 6px; }
+  .acc { background: var(--card-bg); border: 1px solid #ece9e1; border-radius: 8px; }
+  .acc h2 { margin: 0; font-size: clamp(13px, 1.2vw, 15px); }
+  .acc-btn {
+    width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px 16px;
+    font: inherit; font-weight: 600; color: var(--title); background: none; border: 0; cursor: pointer; text-align: left;
   }
+  .acc-btn:hover { background: #f2f0e9; border-radius: 8px; }
+  .acc-plus { position: relative; width: 14px; height: 14px; flex: 0 0 auto; transition: transform 0.3s ease; }
+  .acc-plus::before, .acc-plus::after { content: ""; position: absolute; background: var(--title); }
+  .acc-plus::before { left: 0; right: 0; top: 6px; height: 2px; }
+  .acc-plus::after { top: 0; bottom: 0; left: 6px; width: 2px; }
+  .acc-btn[aria-expanded="true"] .acc-plus { transform: rotate(45deg); }
+  .acc-ico { width: 18px; height: 18px; color: var(--accent-vibe); flex: 0 0 auto; }
+  .acc-inner > div { padding: 2px 16px 12px 40px; }
+  .acc-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
+  .acc h3 { margin: 8px 0 2px 0; font-size: clamp(12px, 1.1vw, 14px); color: var(--title); }
+  .acc p { margin: 2px 0 0 0; font-size: clamp(12px, 1.1vw, 14px); line-height: 1.5; }
+  .acc ul, .acc ol { margin: 4px 0 8px 0; padding-left: 20px; }
+  .acc li { font-size: clamp(12px, 1.1vw, 14px); line-height: 1.5; margin-bottom: 3px; }
+  .strengths { columns: 2; column-gap: 32px; }
+  .strengths li { break-inside: avoid; }
 
-  .card dl {
-    margin: 0;
-    text-align: left;
-    width: 100%;
-  }
+  .motion-toggle { display: flex; align-items: center; gap: 6px; font-size: clamp(12px, 1.1vw, 14px); margin: 6px 0 0 0; }
 
-  .card dt {
-    font-size: clamp(11px, 1vw, 12px);
-    font-weight: 700;
-    color: #222;
-    margin: 6px 0 2px 0;
-  }
+  :focus-visible { outline: 3px solid #0645ad; outline-offset: 2px; }
 
-  .card dt:first-child {
-    margin-top: 0;
-  }
-
-  .card dd {
-    margin: 0;
-    font-size: clamp(12px, 1.1vw, 13px);
-    color: #333;
-    line-height: 1.35;
-  }
-
-  .card a,
-  .contact-line a {
-    color: #0645ad;
-  }
-
-  .source-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .source-list li {
-    margin: 0;
-  }
-
-  .contact-line {
-    margin: 8px 0 0 0;
-    font-size: clamp(12px, 1.1vw, 14px);
-    color: #333;
-  }
-
-  footer {
-    flex: 0 0 auto;
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  details {
-    background: #fafafa;
-    border-radius: 8px;
-    padding: 8px 16px;
-  }
-
-  summary {
-    cursor: pointer;
-    font-size: clamp(13px, 1.2vw, 15px);
-    color: #222;
-    font-weight: 600;
-  }
-
-  details p {
-    margin: 8px 0 0 0;
-    font-size: clamp(12px, 1.1vw, 14px);
-    color: #333;
-    line-height: 1.4;
-  }
-
-  details ul {
-    margin: 6px 0 10px 0;
-    padding-left: 20px;
-  }
-
-  details li {
-    font-size: clamp(12px, 1.1vw, 14px);
-    color: #333;
-    line-height: 1.4;
-    margin-bottom: 2px;
-  }
-
-  details .label {
-    font-weight: 700;
-    color: #222;
-    margin: 8px 0 2px 0;
-  }
-
-  details .label:first-of-type {
-    margin-top: 8px;
-  }
-
-  .motion-toggle {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: clamp(12px, 1.1vw, 14px);
-    color: #333;
-  }
-
-  html.motion-off .character-wrap,
-  html.motion-off .character-spin,
-  html.motion-off .speech-bubble,
-  html.motion-off .details-wrapper {
-    transition: none;
-  }
-
+  html.motion-off *, html.motion-off *::before, html.motion-off *::after { transition: none !important; }
   @media (prefers-reduced-motion: reduce) {
-    .character-wrap,
-    .character-spin,
-    .speech-bubble,
-    .details-wrapper {
-      transition: none;
-    }
+    *, *::before, *::after { transition: none !important; }
+  }
+  @media (max-width: 1100px) { .more-row { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 800px) {
+    body { padding: 24px 16px 20px; }
+    .card-row, .more-row, .acc-cols { grid-template-columns: 1fr; }
+    .strengths { columns: 1; }
   }
 </style>
 </head>
 <body>
+  <div class="top-accent-bar" aria-hidden="true"></div>
+  <div class="scroll-progress" id="progress" aria-hidden="true"></div>
 
   <header>
     <h1>윤대영 · 스스로 선택한 것에만 불이 붙는 사람</h1>
-    <p>흥미로운 걸 좋아하고 직접 만들어보는 사람입니다. 게임·드론·보안을 만들어보며 개발을 배웠고, 지금은 Java 백엔드로 기초를 다지고 있습니다. 이 페이지는 저를 채용할지 검토하는 분께 제가 무엇을 만들어봤는지 보여주기 위한 곳입니다.</p>
+    <p>흥미로운 걸 좋아하고, 남들과 다른 관점을 가지고 있어 직접 만들어보는 사람입니다. 게임·드론·보안을 만들어보며 개발을 배웠고, 지금은 Java 백엔드로 기초를 다지고 있습니다. 이 페이지는 저를 채용할지 검토하는 분께 제가 무엇을 만들어봤는지 보여주기 위한 곳입니다.</p>
     <p class="contact-line">
       <a href="https://github.com/zaqxsw108091-create" target="_blank" rel="noopener">GitHub</a>
       · <a href="mailto:zaqxsw108091@gmail.com">zaqxsw108091@gmail.com</a>
@@ -305,11 +193,9 @@
   <main>
     <h2>무엇을 만드나요</h2>
     <div class="card-row">
-      <article class="card">
+      <article class="card game">
         <div class="character-wrap">
-          <div class="character-spin">
-            <img src="game.png" alt="게임 캐릭터 이미지" aria-hidden="true">
-          </div>
+          <div class="character-spin"><img src="game.png" alt="게임 캐릭터 이미지" aria-hidden="true"></div>
           <div class="speech-bubble" aria-hidden="true">제가 만든 게임들을 소개할게요</div>
         </div>
         <h3>게임</h3>
@@ -336,11 +222,9 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="card drone">
         <div class="character-wrap">
-          <div class="character-spin">
-            <img src="drone.png" alt="드론 캐릭터 이미지" aria-hidden="true">
-          </div>
+          <div class="character-spin"><img src="drone.png" alt="드론 캐릭터 이미지" aria-hidden="true"></div>
           <div class="speech-bubble" aria-hidden="true">드론 시뮬레이터 이야기예요</div>
         </div>
         <h3>드론</h3>
@@ -361,11 +245,9 @@
         </div>
       </article>
 
-      <article class="card">
+      <article class="card security">
         <div class="character-wrap">
-          <div class="character-spin">
-            <img src="security.png" alt="보안 캐릭터 이미지" aria-hidden="true">
-          </div>
+          <div class="character-spin"><img src="security.png" alt="보안 캐릭터 이미지" aria-hidden="true"></div>
           <div class="speech-bubble" aria-hidden="true">막는 쪽을 만들어봤어요</div>
         </div>
         <h3>보안</h3>
@@ -386,46 +268,164 @@
         </div>
       </article>
     </div>
+
+    <section class="more" aria-labelledby="more-title">
+      <p class="eyebrow">MORE PROJECTS</p>
+      <h2 id="more-title">더 만든 것들</h2>
+      <p class="more-intro">위 3개 외에도 같은 방식으로 계획하고 완성까지 끝낸 프로젝트들입니다.</p>
+      <div class="more-row">
+        <article class="more-card">
+          <div class="more-head">
+            <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span>
+            <h3>이 페이지 (about-me)</h3>
+          </div>
+          <dl>
+            <dt>상황</dt>
+            <dd>SKT 알레프 과제로 자기소개 페이지 제작을 지시받았다</dd>
+            <dt>행동</dt>
+            <dd>CLAUDE.md로 규칙 파일을 먼저 쓰고, 공개 범위를 직접 정한 뒤 바이브 코딩으로 구현했다. 지금은 ZTNA 방어 모듈(BYTE BACK)을 진행 중이다</dd>
+            <dt>결과</dt>
+            <dd>배포를 마쳤고, 과제 제출·승인까지 완료됐다</dd>
+          </dl>
+          <div class="more-links">
+            <a class="link-btn" href="https://github.com/zaqxsw108091-create/about-me" target="_blank" rel="noopener">소스 보기</a>
+            <a class="link-btn" href="https://zaqxsw108091-create.github.io/about-me/" target="_blank" rel="noopener">배포 페이지</a>
+          </div>
+        </article>
+
+        <article class="more-card">
+          <div class="more-head">
+            <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span>
+            <h3>echo-park (에코 파크)</h3>
+          </div>
+          <dl>
+            <dt>상황</dt>
+            <dd>1~6인 협동 퍼즐 플랫포머를 만들고 싶었지만, 사람이 안 모여도 혼자 즐길 수 있어야 했다</dd>
+            <dt>행동</dt>
+            <dd>자신의 행동을 녹화해 루프로 재생하는 EchoRec 시스템을 설계해, 혼자서도 과거의 나(에코)와 함께 동시 버튼 누르기 같은 협동 퍼즐을 풀 수 있게 했다. Phaser 3 + Electron + PWA로 웹·데스크탑·모바일을 하나의 코드베이스로 커버했다</dd>
+            <dt>결과</dt>
+            <dd>GitHub에 공개했고, 현재는 싱글플레이(+에코 협동) 방식으로 플레이 가능하다</dd>
+          </dl>
+          <div class="more-links">
+            <a class="link-btn" href="https://github.com/zaqxsw108091-create/echo-park" target="_blank" rel="noopener">소스 보기</a>
+          </div>
+        </article>
+
+        <article class="more-card">
+          <div class="more-head">
+            <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="10" height="14" rx="2"/><path d="M8 4h10a2 2 0 0 1 2 2v10"/></svg></span>
+            <h3>touch-flip</h3>
+          </div>
+          <dl>
+            <dt>상황</dt>
+            <dd>2인 로컬 멀티플레이 터치 카드 게임을 만들면서 "같은 조건에서 겨루는 공정함"이 핵심 과제였다</dd>
+            <dt>행동</dt>
+            <dd>입력을 하나의 진입점(InputGovernor)으로만 받게 분리해 게임 로직이 직접 터치를 건드리지 못하게 했고, 카드 크기를 화면 비율 대신 물리 크기(16mm)로 고정해 화면 크기 유불리를 없앴다. 온라인 대전은 서버가 유일한 판정 권위를 갖도록 구현했다</dd>
+            <dt>결과</dt>
+            <dd>로컬·온라인 두 모드가 동작하는 버전을 완성해 GitHub에 공개했고, 핵심 로직에 유닛 테스트를 붙여 검증했다</dd>
+          </dl>
+          <div class="more-links">
+            <a class="link-btn" href="https://github.com/zaqxsw108091-create/touch-flip" target="_blank" rel="noopener">소스 보기</a>
+          </div>
+        </article>
+
+        <article class="more-card">
+          <div class="more-head">
+            <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4h4l6 5V5l-6 5H3z"/><path d="M17 9a4 4 0 0 1 0 6"/></svg></span>
+            <h3>하찮은 속보 (petty-news)</h3>
+          </div>
+          <dl>
+            <dt>상황</dt>
+            <dd>토스 앱인토스 8월 바이브 코딩 챌린지에 참가했다</dd>
+            <dt>행동</dt>
+            <dd>Granite/React Native 프레임워크로 제작해 .ait 파일로 빌드했다</dd>
+            <dt>결과</dt>
+            <dd>2026-08-26 20260825-10 버전으로 앱인토스에 정식 출시를 완료했다</dd>
+          </dl>
+          <div class="more-links">
+            <a class="link-btn" href="https://github.com/zaqxsw108091-create/petty-news" target="_blank" rel="noopener">소스 보기</a>
+          </div>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <details>
-      <summary>만드는 방식</summary>
-      <p>무엇을 만들든 계획부터 세우고 시작합니다. 이 페이지도 규칙 파일(CLAUDE.md)을 먼저 쓰고, 공개할 것과 안 할 것을 정한 뒤에 코드를 작성했습니다.</p>
-    </details>
+    <div class="acc">
+      <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-make">
+        <span class="acc-plus" aria-hidden="true"></span>
+        <svg class="acc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.4 2.4-2.6-.6-.6-2.6z"/></svg>
+        만드는 방식</button></h2>
+      <div class="acc-panel" id="acc-make" aria-hidden="true"><div class="acc-inner"><div class="acc-cols">
+        <p>무엇을 만들든 계획부터 세우고 시작합니다. 이 페이지도 규칙 파일(CLAUDE.md)을 먼저 쓰고, 공개할 것과 안 할 것을 정한 뒤에 코드를 작성했습니다.</p>
+        <ol>
+          <li>계획 세우기</li>
+          <li>규칙 파일(CLAUDE.md) 쓰기</li>
+          <li>공개할 것과 안 할 것 정하기</li>
+          <li>코드 작성</li>
+        </ol>
+      </div></div></div>
+    </div>
 
-    <details>
-      <summary>공개 범위</summary>
-      <p class="label">공개</p>
-      <ul>
-        <li>이름과 소개</li>
-        <li>관심 3분야와 근거</li>
-        <li>GitHub·이메일</li>
-      </ul>
-      <p class="label">비공개</p>
-      <ul>
-        <li>생년월일 — 채용 판단에 불필요</li>
-        <li>주소·전화번호 — 유포 범위 통제 불가</li>
-        <li>이지스 내부 구성 — 보안 프로그램 특성</li>
-      </ul>
-    </details>
+    <div class="acc">
+      <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-public">
+        <span class="acc-plus" aria-hidden="true"></span>
+        <svg class="acc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        공개 범위</button></h2>
+      <div class="acc-panel" id="acc-public" aria-hidden="true"><div class="acc-inner"><div class="acc-cols">
+        <div>
+          <h3>공개</h3>
+          <ul>
+            <li>이름과 소개</li>
+            <li>관심 3분야와 근거</li>
+            <li>GitHub·이메일</li>
+          </ul>
+        </div>
+        <div>
+          <h3>비공개</h3>
+          <ul>
+            <li>생년월일 — 채용 판단에 불필요</li>
+            <li>주소·전화번호 — 유포 범위 통제 불가</li>
+            <li>이지스 내부 구성 — 보안 프로그램 특성</li>
+          </ul>
+        </div>
+      </div></div></div>
+    </div>
 
-    <details>
-      <summary>일하는 방식</summary>
-      <p class="label">몰입할 때</p>
-      <p>흥미로운 것, 스스로 원해서 하는 일</p>
-      <p class="label">힘 빠질 때</p>
-      <p>자신의 방식을 강요받거나 억지로 해야 할 때</p>
-      <p class="label">강점</p>
-      <ul>
-        <li>모르는 건 그 자리에서 바로 물어본다</li>
-        <li>원하는 강의나 공부는 끝까지 열심히 듣는다</li>
-        <li>계획을 세우고 시작한다</li>
-      </ul>
-      <p class="label">핵심 가치</p>
-      <p>희망(할 수 있다는 믿음) · 신뢰 · 질서</p>
-      <p>궁금한 게 많고, 새로운 방식에 열려 있는 걸 좋아합니다.</p>
-    </details>
+    <div class="acc">
+      <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-work">
+        <span class="acc-plus" aria-hidden="true"></span>
+        <svg class="acc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
+        일하는 방식</button></h2>
+      <div class="acc-panel" id="acc-work" aria-hidden="true"><div class="acc-inner"><div class="acc-cols">
+        <div>
+          <h3>몰입할 때</h3>
+          <p>흥미로운 것, 스스로 원해서 하는 일</p>
+          <h3>힘 빠질 때</h3>
+          <p>자신의 방식을 강요받거나 억지로 해야 할 때</p>
+        </div>
+        <div>
+          <h3>핵심 가치</h3>
+          <p>희망(할 수 있다는 믿음) · 신뢰 · 질서</p>
+          <p>궁금한 게 많고, 새로운 방식에 열려 있는 걸 좋아합니다.</p>
+        </div>
+      </div></div></div>
+    </div>
+
+    <div class="acc">
+      <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-strength">
+        <span class="acc-plus" aria-hidden="true"></span>
+        <svg class="acc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+        강점</button></h2>
+      <div class="acc-panel" id="acc-strength" aria-hidden="true"><div class="acc-inner"><div>
+        <ul class="strengths">
+          <li>모르는 건 그 자리에서 바로 물어본다</li>
+          <li>원하는 강의나 공부는 끝까지 열심히 듣는다</li>
+          <li>계획을 세우고 시작한다</li>
+          <li>도전골든벨 도 대표로 출전해 50문제 중 36번까지 생존했다</li>
+        </ul>
+      </div></div></div>
+    </div>
 
     <p class="motion-toggle">
       <input type="checkbox" id="motion-off">
@@ -434,29 +434,36 @@
   </footer>
 
   <script>
+    function reduced() {
+      return document.documentElement.classList.contains('motion-off') ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
     document.querySelectorAll('.card').forEach(function (card) {
       var button = card.querySelector('.guide-btn');
       var wrapper = card.querySelector('.details-wrapper');
       var animating = false;
-
-      function isMotionReduced() {
-        return document.documentElement.classList.contains('motion-off') ||
-          window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      }
-
       button.addEventListener('click', function () {
         if (animating) return;
-
         var isOpen = button.getAttribute('aria-expanded') === 'true';
         button.setAttribute('aria-expanded', String(!isOpen));
         wrapper.classList.toggle('expanded', !isOpen);
         wrapper.setAttribute('aria-hidden', String(isOpen));
         card.classList.toggle('is-open', !isOpen);
-
-        if (!isMotionReduced()) {
+        if (!reduced()) {
           animating = true;
           setTimeout(function () { animating = false; }, 550);
         }
+      });
+    });
+
+    document.querySelectorAll('.acc-btn').forEach(function (btn) {
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      btn.addEventListener('click', function () {
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!isOpen));
+        panel.classList.toggle('expanded', !isOpen);
+        panel.setAttribute('aria-hidden', String(isOpen));
       });
     });
 
@@ -464,7 +471,16 @@
     motionCheckbox.addEventListener('change', function () {
       document.documentElement.classList.toggle('motion-off', motionCheckbox.checked);
     });
-  </script>
 
+    var progress = document.getElementById('progress');
+    function updateProgress() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      progress.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
+  </script>
 </body>
 </html>
