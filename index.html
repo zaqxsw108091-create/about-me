@@ -4,176 +4,241 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>윤대영 소개</title>
+<meta name="description" content="Java 백엔드를 준비하는 윤대영의 포트폴리오. 게임·드론·보안 프로젝트와 SKT 알레프 과제를 상황·행동·결과로 정리했습니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="윤대영 · 스스로 선택한 것에만 불이 붙는 사람">
+<meta property="og:description" content="Java 백엔드를 준비하는 윤대영의 포트폴리오. 게임·드론·보안 프로젝트와 SKT 알레프 과제를 상황·행동·결과로 정리했습니다.">
+<meta property="og:url" content="https://zaqxsw108091-create.github.io/about-me/">
+<meta property="og:image" content="https://zaqxsw108091-create.github.io/about-me/security.png">
 <link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<script>
+  // 화면이 그려지기 전에 테마를 정해 깜빡임을 막는다
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  })();
+</script>
 <style>
   :root {
-    --accent-game: #6b5b95;
-    --accent-drone: #3d5a80;
-    --accent-security: #293b5f;
-    --accent-vibe: #146b5c;
-    --bg: #fafaf8;
-    --card-bg: #faf9f6;
-    --text: #333;
-    --title: #222;
+    --bg: #f3f6fb;
+    --surface: #ffffff;
+    --surface-2: #eef3fa;
+    --ink: #14213d;
+    --muted: #46536b;
+    --line: #d5deec;
+    --grid: rgba(31, 95, 191, 0.07);
+    --link: #1a56b0;
+    --focus: #1a56b0;
+    --tile: #f6f8fc;
+    --game: #6b4fa8;
+    --drone: #0b6fa3;
+    --security: #1e3a8a;
+    --vibe: #0f6e66;
+    --game-rgb: 107, 79, 168;
+    --drone-rgb: 11, 111, 163;
+    --security-rgb: 30, 58, 138;
+    --vibe-rgb: 15, 110, 102;
+    --shadow: rgba(20, 33, 61, 0.12);
   }
+  :root[data-theme="dark"] {
+    --bg: #0c1526;
+    --surface: #132039;
+    --surface-2: #182844;
+    --ink: #e7eef9;
+    --muted: #b0bdd3;
+    --line: #2a3f62;
+    --grid: rgba(127, 178, 255, 0.07);
+    --link: #8dbcff;
+    --focus: #8dbcff;
+    --tile: #eef2f8;
+    --game: #c2b0f2;
+    --drone: #74cbf2;
+    --security: #a9bdff;
+    --vibe: #6fd6c7;
+    --game-rgb: 194, 176, 242;
+    --drone-rgb: 116, 203, 242;
+    --security-rgb: 169, 189, 255;
+    --vibe-rgb: 111, 214, 199;
+    --shadow: rgba(0, 0, 0, 0.4);
+  }
+
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; overflow-x: hidden; }
   body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: -apple-system, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-    color: var(--text);
+    font-family: "IBM Plex Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+    color: var(--ink);
     background: var(--bg);
-    padding: 24px 40px 20px;
+    padding: 22px 40px 20px;
+    line-height: 1.5;
+    transition: background 0.25s ease, color 0.25s ease;
   }
+  a { color: var(--link); }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 
-  /* 상단 3색 바 + 스크롤 진행바 */
   .top-accent-bar {
     position: fixed; top: 0; left: 0; width: 100%; height: 4px; z-index: 20;
-    background: linear-gradient(90deg, var(--accent-game), var(--accent-drone), var(--accent-security));
+    background: linear-gradient(90deg, var(--game), var(--drone), var(--security));
   }
   .scroll-progress {
     position: fixed; top: 4px; left: 0; height: 3px; width: 0; z-index: 19;
-    background: var(--accent-vibe);
-    transition: width 0.1s linear;
+    background: var(--vibe);
   }
 
-  /* 히어로 */
+  /* 히어로: 설계도 격자 */
   header {
-    flex: 0 0 auto;
-    padding: 6px 0 4px;
-    background-image: radial-gradient(rgba(41, 59, 95, 0.04) 1.2px, transparent 1.2px);
-    background-size: 18px 18px;
+    position: relative;
+    padding: 14px 18px 14px;
+    margin: 0 -18px;
+    border-radius: 14px;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
-  header h1 { margin: 0 0 6px 0; font-size: clamp(20px, 2.4vw, 30px); color: var(--title); }
-  header p { margin: 0; font-size: clamp(13px, 1.2vw, 15px); max-width: 900px; line-height: 1.5; }
-  .contact-line { margin: 8px 0 0 0; font-size: clamp(12px, 1.1vw, 14px); }
-  a { color: #0645ad; }
-
-  main { flex: 0 1 auto; display: block; margin-top: 14px; }
-  main h2, .more h2 { margin: 0 0 8px 0; font-size: clamp(16px, 1.8vw, 20px); color: var(--title); }
-  .eyebrow {
-    display: flex; align-items: center; gap: 8px; margin: 0 0 2px 0;
-    font-size: 11px; letter-spacing: 0.14em; font-weight: 700; color: var(--accent-vibe);
+  .hero-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  header h1 { margin: 0 0 6px 0; font-size: clamp(20px, 2.4vw, 30px); font-weight: 700; letter-spacing: -0.01em; }
+  header p { margin: 0; font-size: clamp(13px, 1.2vw, 15px); max-width: 900px; color: var(--ink); }
+  .contact-line { margin-top: 8px !important; font-size: clamp(12px, 1.1vw, 14px) !important; }
+  .theme-btn {
+    flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; font: inherit; font-size: 13px; font-weight: 500;
+    color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
   }
-  .eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
+  .theme-btn svg { width: 16px; height: 16px; }
+  .theme-btn:hover { border-color: var(--link); }
 
-  /* 3카드 */
+  main { margin-top: 12px; }
+  h2 { margin: 0 0 8px 0; font-size: clamp(16px, 1.8vw, 20px); font-weight: 700; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px 0; padding: 0; list-style: none; justify-content: center; }
+  .tags li {
+    font-family: "IBM Plex Mono", Consolas, monospace; font-size: 11.5px;
+    padding: 2px 8px; border-radius: 6px;
+    color: var(--c); background: rgba(var(--c-rgb), 0.1);
+  }
+
+  /* 대표 3카드 */
   .card-row { display: grid; grid-template-columns: repeat(3, 1fr); align-items: start; gap: 16px; }
   .card {
-    background: var(--card-bg);
-    border-radius: 12px;
-    border: 1px solid #ece9e1;
-    border-top: 3px solid var(--c);
-    padding: 14px 16px;
+    background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--c);
+    border-radius: 12px; padding: 14px 16px;
     display: flex; flex-direction: column; align-items: center; text-align: center;
-    min-height: 0; overflow: hidden;
+    overflow: hidden;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  .card:hover, .card:focus-within { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(var(--c-rgb), 0.16); }
-  .game { --c: var(--accent-game); --c-rgb: 107, 91, 149; }
-  .drone { --c: var(--accent-drone); --c-rgb: 61, 90, 128; }
-  .security { --c: var(--accent-security); --c-rgb: 41, 59, 95; }
+  .card:hover, .card:focus-within { transform: translateY(-3px); box-shadow: 0 10px 22px var(--shadow); }
+  .game { --c: var(--game); --c-rgb: var(--game-rgb); }
+  .drone { --c: var(--drone); --c-rgb: var(--drone-rgb); }
+  .security { --c: var(--security); --c-rgb: var(--security-rgb); }
+  .vibe { --c: var(--vibe); --c-rgb: var(--vibe-rgb); }
 
-  .character-wrap { position: relative; display: inline-flex; align-items: center; flex: 0 0 auto; transition: transform 0.4s ease; }
-  .card.is-open .character-wrap { transform: translate(-22px, -10px); }
+  .character-wrap { position: relative; display: inline-flex; align-items: center; transition: transform 0.4s ease; }
+  .card.is-open .character-wrap { transform: translate(-22px, -6px); }
   .character-spin { display: inline-flex; transition: transform 0.4s ease; }
   .card.is-open .character-spin { transform: rotate(-10deg); }
-  .card img { width: 120px; height: 120px; object-fit: contain; mix-blend-mode: multiply; flex: 0 0 auto; }
+  .char-tile { display: inline-flex; background: var(--tile); border-radius: 18px; padding: 4px; }
+  .card img { width: 108px; height: 108px; object-fit: contain; mix-blend-mode: multiply; }
   .speech-bubble {
-    position: absolute; top: 12px; left: 100%; margin-left: 10px; width: 130px;
-    background: #fff; border: 1px solid #ccc; border-radius: 10px; padding: 6px 10px;
-    font-size: 11px; line-height: 1.3; color: var(--title); text-align: left;
+    position: absolute; top: 10px; left: 100%; margin-left: 10px; width: 130px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 6px 10px;
+    font-size: 11.5px; line-height: 1.35; color: var(--ink); text-align: left;
     opacity: 0; transform: scale(0.85);
     transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
   }
   .card.is-open .speech-bubble { opacity: 1; transform: scale(1); }
-  .card h3 { margin: 6px 0 8px 0; font-size: clamp(15px, 1.5vw, 18px); color: var(--c); flex: 0 0 auto; }
+  .card h3 { margin: 6px 0 2px 0; font-size: clamp(15px, 1.5vw, 18px); color: var(--c); }
+  .summary { margin: 0 0 6px 0; font-size: 13px; color: var(--muted); }
   .guide-btn {
-    flex: 0 0 auto; margin: 0 0 8px 0; padding: 6px 16px;
-    font-size: clamp(12px, 1.1vw, 13px); font-weight: 600; font-family: inherit;
-    color: var(--title); background: #fff; border: 1px solid #ccc; border-radius: 999px; cursor: pointer;
-    transition: background 0.2s, border-color 0.2s;
+    margin: 0 0 8px 0; padding: 6px 16px; font: inherit; font-size: 13px; font-weight: 500;
+    color: var(--ink); background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
   }
-  .guide-btn:hover { background: #f0f0f0; border-color: var(--c); }
+  .guide-btn:hover { border-color: var(--c); }
 
   .details-wrapper, .acc-panel { display: grid; grid-template-rows: 0fr; width: 100%; transition: grid-template-rows 0.35s ease 0.15s; }
   .details-wrapper.expanded, .acc-panel.expanded { grid-template-rows: 1fr; }
   .details-inner, .acc-inner { overflow: hidden; min-height: 0; }
 
-  .card dl { margin: 0; text-align: left; width: 100%; }
-  .card dt { font-size: clamp(11px, 1vw, 12px); font-weight: 700; color: var(--title); margin: 6px 0 2px 0; }
-  .card dt:first-child { margin-top: 0; }
-  .card dd { margin: 0; font-size: clamp(12px, 1.1vw, 13px); line-height: 1.4; }
+  dl { margin: 0; text-align: left; width: 100%; }
+  dt { font-size: 12px; font-weight: 700; margin: 8px 0 2px 0; }
+  dt:first-child { margin-top: 0; }
+  dd { margin: 0; font-size: 13px; line-height: 1.5; }
   .source-list { margin: 0; padding: 0; list-style: none; }
 
   /* 더 만든 것들 */
   .more { margin-top: 28px; }
-  .more-intro { margin: 0 0 12px 0; font-size: clamp(13px, 1.2vw, 15px); }
-  .more-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: stretch; }
+  .more-intro { margin: 0 0 12px 0; font-size: clamp(13px, 1.2vw, 15px); color: var(--muted); }
+  .group-title {
+    display: flex; align-items: center; gap: 10px;
+    margin: 16px 0 10px 0; font-size: 15px; font-weight: 700; color: var(--ink);
+  }
+  .group-title::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .more-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
   .more-card {
-    background: var(--card-bg); border: 1px solid #ddebe7; border-radius: 12px; padding: 14px 16px;
-    display: flex; flex-direction: column;
+    background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--c);
+    border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  .more-card:hover, .more-card:focus-within { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(20, 107, 92, 0.16); }
-  .more-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
-  .badge {
-    flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%;
-    background: #e3f0ec; color: var(--accent-vibe); display: grid; place-items: center;
+  .more-card:hover, .more-card:focus-within { transform: translateY(-3px); box-shadow: 0 10px 22px var(--shadow); }
+  .more-card h4 { margin: 0 0 6px 0; font-size: 15.5px; color: var(--c); }
+  .more-card .tags { justify-content: flex-start; }
+  .more-card dl { flex: 1 1 auto; }
+  .ai-note {
+    margin-top: 10px; padding: 8px 10px; border-radius: 8px; background: var(--surface-2);
+    font-size: 12.5px; line-height: 1.5;
   }
-  .badge svg { width: 18px; height: 18px; }
-  .more-card h3 { margin: 0; font-size: clamp(14px, 1.3vw, 16px); color: var(--accent-vibe); }
-  .more-card dl { margin: 0; flex: 1 1 auto; }
-  .more-card dt { font-size: 12px; font-weight: 700; color: var(--title); margin: 8px 0 2px 0; }
-  .more-card dt:first-child { margin-top: 0; }
-  .more-card dd { margin: 0; font-size: 13px; line-height: 1.45; }
+  .ai-note p { margin: 0; }
+  .ai-note b { font-weight: 700; }
   .more-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
   .link-btn {
-    display: inline-block; padding: 6px 14px; font-size: 13px; font-weight: 600;
-    color: var(--accent-vibe); background: #fff; border: 1px solid var(--accent-vibe);
+    display: inline-block; padding: 6px 14px; font-size: 13px; font-weight: 500;
+    color: var(--c); background: transparent; border: 1px solid var(--c);
     border-radius: 999px; text-decoration: none;
   }
-  .link-btn:hover { background: var(--accent-vibe); color: #fff; }
+  .link-btn:hover { background: rgba(var(--c-rgb), 0.12); }
 
   /* 접이식 */
-  footer { flex: 0 0 auto; margin-top: 24px; display: flex; flex-direction: column; gap: 6px; }
-  .acc { background: var(--card-bg); border: 1px solid #ece9e1; border-radius: 8px; }
+  footer { margin-top: 26px; display: flex; flex-direction: column; gap: 6px; }
+  .acc { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
   .acc h2 { margin: 0; font-size: clamp(13px, 1.2vw, 15px); }
   .acc-btn {
     width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px 16px;
-    font: inherit; font-weight: 600; color: var(--title); background: none; border: 0; cursor: pointer; text-align: left;
+    font: inherit; font-weight: 700; color: var(--ink); background: none; border: 0; border-radius: 10px; cursor: pointer; text-align: left;
   }
-  .acc-btn:hover { background: #f2f0e9; border-radius: 8px; }
+  .acc-btn:hover { background: var(--surface-2); }
   .acc-plus { position: relative; width: 14px; height: 14px; flex: 0 0 auto; transition: transform 0.3s ease; }
-  .acc-plus::before, .acc-plus::after { content: ""; position: absolute; background: var(--title); }
+  .acc-plus::before, .acc-plus::after { content: ""; position: absolute; background: var(--ink); }
   .acc-plus::before { left: 0; right: 0; top: 6px; height: 2px; }
   .acc-plus::after { top: 0; bottom: 0; left: 6px; width: 2px; }
   .acc-btn[aria-expanded="true"] .acc-plus { transform: rotate(45deg); }
-  .acc-ico { width: 18px; height: 18px; color: var(--accent-vibe); flex: 0 0 auto; }
-  .acc-inner > div { padding: 2px 16px 12px 40px; }
+  .acc-ico { width: 18px; height: 18px; color: var(--link); flex: 0 0 auto; }
+  .acc-inner > div { padding: 2px 16px 14px 40px; }
   .acc-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 32px; }
-  .acc h3 { margin: 8px 0 2px 0; font-size: clamp(12px, 1.1vw, 14px); color: var(--title); }
-  .acc p { margin: 2px 0 0 0; font-size: clamp(12px, 1.1vw, 14px); line-height: 1.5; }
+  .acc h3 { margin: 8px 0 2px 0; font-size: 14px; }
+  .acc p, .acc li { font-size: 14px; line-height: 1.55; }
+  .acc p { margin: 2px 0 0 0; }
   .acc ul, .acc ol { margin: 4px 0 8px 0; padding-left: 20px; }
-  .acc li { font-size: clamp(12px, 1.1vw, 14px); line-height: 1.5; margin-bottom: 3px; }
-  .strengths { columns: 2; column-gap: 32px; }
-  .strengths li { break-inside: avoid; }
+  .acc li { margin-bottom: 4px; }
+  .strengths { list-style: none; padding: 0 !important; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px; }
+  .strengths li { margin: 0; }
+  .strengths b { display: block; color: var(--link); }
 
-  .motion-toggle { display: flex; align-items: center; gap: 6px; font-size: clamp(12px, 1.1vw, 14px); margin: 6px 0 0 0; }
-
-  :focus-visible { outline: 3px solid #0645ad; outline-offset: 2px; }
+  .motion-toggle { display: flex; align-items: center; gap: 6px; font-size: 14px; margin: 8px 0 0 0; }
 
   html.motion-off *, html.motion-off *::before, html.motion-off *::after { transition: none !important; }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; }
   }
-  @media (max-width: 1100px) { .more-row { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 1000px) { .more-row { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 800px) {
-    body { padding: 24px 16px 20px; }
-    .card-row, .more-row, .acc-cols { grid-template-columns: 1fr; }
-    .strengths { columns: 1; }
+    body { padding: 22px 16px 20px; }
+    header { margin: 0 -8px; padding: 12px 8px; }
+    .card-row, .more-row, .acc-cols, .strengths { grid-template-columns: 1fr; }
+    .acc-inner > div { padding-left: 16px; }
   }
 </style>
 </head>
@@ -182,7 +247,13 @@
   <div class="scroll-progress" id="progress" aria-hidden="true"></div>
 
   <header>
-    <h1>윤대영 · 스스로 선택한 것에만 불이 붙는 사람</h1>
+    <div class="hero-top">
+      <h1>윤대영 · 스스로 선택한 것에만 불이 붙는 사람</h1>
+      <button type="button" class="theme-btn" id="theme-btn" aria-pressed="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        <span id="theme-label">다크 모드</span>
+      </button>
+    </div>
     <p>흥미로운 걸 좋아하고, 남들과 다른 관점을 가지고 있어 직접 만들어보는 사람입니다. 게임·드론·보안을 만들어보며 개발을 배웠고, 지금은 Java 백엔드로 기초를 다지고 있습니다. 이 페이지는 저를 채용할지 검토하는 분께 제가 무엇을 만들어봤는지 보여주기 위한 곳입니다.</p>
     <p class="contact-line">
       <a href="https://github.com/zaqxsw108091-create" target="_blank" rel="noopener">GitHub</a>
@@ -195,10 +266,12 @@
     <div class="card-row">
       <article class="card game">
         <div class="character-wrap">
-          <div class="character-spin"><img src="game.png" alt="게임 캐릭터 이미지" aria-hidden="true"></div>
+          <div class="character-spin"><span class="char-tile"><img src="game.png" alt="" aria-hidden="true"></span></div>
           <div class="speech-bubble" aria-hidden="true">제가 만든 게임들을 소개할게요</div>
         </div>
         <h3>게임</h3>
+        <p class="summary">레이싱 → 2DCombat → FPS, 게임 3개를 순서대로 완성</p>
+        <ul class="tags" aria-label="사용 기술"><li>C#</li><li>Unity</li><li>JavaScript</li></ul>
         <button type="button" class="guide-btn" aria-expanded="false" aria-controls="details-game">가이드 부르기</button>
         <div class="details-wrapper" id="details-game" aria-hidden="true">
           <div class="details-inner">
@@ -224,10 +297,12 @@
 
       <article class="card drone">
         <div class="character-wrap">
-          <div class="character-spin"><img src="drone.png" alt="드론 캐릭터 이미지" aria-hidden="true"></div>
+          <div class="character-spin"><span class="char-tile"><img src="drone.png" alt="" aria-hidden="true"></span></div>
           <div class="speech-bubble" aria-hidden="true">드론 시뮬레이터 이야기예요</div>
         </div>
         <h3>드론</h3>
+        <p class="summary">드론과 미션을 골라 비행하는 시뮬레이터</p>
+        <ul class="tags" aria-label="사용 기술"><li>JavaScript</li></ul>
         <button type="button" class="guide-btn" aria-expanded="false" aria-controls="details-drone">가이드 부르기</button>
         <div class="details-wrapper" id="details-drone" aria-hidden="true">
           <div class="details-inner">
@@ -247,10 +322,12 @@
 
       <article class="card security">
         <div class="character-wrap">
-          <div class="character-spin"><img src="security.png" alt="보안 캐릭터 이미지" aria-hidden="true"></div>
+          <div class="character-spin"><span class="char-tile"><img src="security.png" alt="" aria-hidden="true"></span></div>
           <div class="speech-bubble" aria-hidden="true">막는 쪽을 만들어봤어요</div>
         </div>
         <h3>보안</h3>
+        <p class="summary">로그인 공격을 막고 기록하는 방어 시스템 이지스</p>
+        <ul class="tags" aria-label="사용 기술"><li>Java</li><li>Spring Boot</li><li>Spring Security</li></ul>
         <button type="button" class="guide-btn" aria-expanded="false" aria-controls="details-security">가이드 부르기</button>
         <div class="details-wrapper" id="details-security" aria-hidden="true">
           <div class="details-inner">
@@ -258,9 +335,9 @@
               <dt>상황</dt>
               <dd>해킹 대회 영상을 보다 흥미가 생겼는데 공격 기술은 아직 모른다. 대신 막는 쪽 구현이 궁금했다</dd>
               <dt>행동</dt>
-              <dd>관리자 계정에서 일반 계정의 로그인 실패 횟수와 IP를 확인하고 차단하는 기능(이지스)을 만들었다</dd>
+              <dd>로그인 실패를 IP·계정별로 세어 자동으로 차단·잠그고, 관리자 화면에서 실패 횟수를 확인하고 직접 차단·해제할 수 있는 방어 시스템(이지스)을 만들었다</dd>
               <dt>결과</dt>
-              <dd>실패가 쌓인 IP가 목록에 뜨고, 차단하면 그 IP의 로그인이 막히는 것을 확인했다</dd>
+              <dd>실패가 쌓인 IP가 목록에 뜨고, 차단하면 그 IP의 로그인이 막히는 것을 확인했다. 코드를 올릴 때마다 GitHub Actions로 빌드와 테스트가 자동으로 돈다</dd>
               <dt>소스</dt>
               <dd><a href="https://github.com/zaqxsw108091-create/aegis" target="_blank" rel="noopener">aegis</a></dd>
             </dl>
@@ -270,18 +347,17 @@
     </div>
 
     <section class="more" aria-labelledby="more-title">
-      <p class="eyebrow">MORE PROJECTS</p>
       <h2 id="more-title">더 만든 것들</h2>
       <p class="more-intro">위 3개 외에도 같은 방식으로 계획하고 완성까지 끝낸 프로젝트들입니다.</p>
+
+      <h3 class="group-title">SKT 알레프 과제</h3>
       <div class="more-row">
-        <article class="more-card">
-          <div class="more-head">
-            <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span>
-            <h3>이 페이지 (about-me)</h3>
-          </div>
+        <article class="more-card vibe">
+          <h4>이 페이지 (about-me)</h4>
+          <ul class="tags" aria-label="사용 기술"><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
           <dl>
             <dt>상황</dt>
-            <dd>SKT 알레프 과제로 자기소개 페이지 제작을 지시받았다</dd>
+            <dd>SKT 알레프 과제 1로 자기소개 페이지 제작을 지시받았다</dd>
             <dt>행동</dt>
             <dd>CLAUDE.md로 규칙 파일을 먼저 쓰고, 공개 범위를 직접 정한 뒤 바이브 코딩으로 구현했다. 지금은 ZTNA 방어 모듈(BYTE BACK)을 진행 중이다</dd>
             <dt>결과</dt>
@@ -293,47 +369,71 @@
           </div>
         </article>
 
-        <article class="more-card">
-          <div class="more-head">
-            <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg></span>
-            <h3>echo-park (에코 파크)</h3>
-          </div>
+        <article class="more-card vibe">
+          <h4>오늘의 진짜 정보판 (Exchange-rate)</h4>
+          <ul class="tags" aria-label="사용 기술"><li>JavaScript</li><li>외부 API</li></ul>
           <dl>
             <dt>상황</dt>
-            <dd>1~6인 협동 퍼즐 플랫포머를 만들고 싶었지만, 사람이 안 모여도 혼자 즐길 수 있어야 했다</dd>
+            <dd>SKT 알레프 과제 4로, 외부 API가 실패해도 그 상태를 숨기지 않는 실시간 정보판을 만들어야 했다</dd>
             <dt>행동</dt>
-            <dd>자신의 행동을 녹화해 루프로 재생하는 EchoRec 시스템을 설계해, 혼자서도 과거의 나(에코)와 함께 동시 버튼 누르기 같은 협동 퍼즐을 풀 수 있게 했다. Phaser 3 + Electron + PWA로 웹·데스크탑·모바일을 하나의 코드베이스로 커버했다</dd>
+            <dd>키 없이 쓰는 Frankfurter API로 달러/원 환율을 받아, 실패 5가지(느림·접근 거부·호출 제한·오프라인·형식 변경)를 화면에 구분해 보여주고 1초→2초→4초 간격으로 재시도하게 했다</dd>
             <dt>결과</dt>
-            <dd>GitHub에 공개했고, 현재는 싱글플레이(+에코 협동) 방식으로 플레이 가능하다</dd>
+            <dd>배포 화면이 옛 API 주소로 실패하던 문제를 직접 찾아 새 주소로 바꿔 해결했다</dd>
           </dl>
+          <div class="ai-note">
+            <p><b>내가 정한 것</b> 데이터(환율)와 API 선택</p>
+            <p><b>AI가 짠 것</b> 화면, 재시도 로직, 테스트 코드</p>
+            <p><b>내가 고친 것</b> API 주소 교체, 두 컴퓨터 작업 충돌 해결</p>
+          </div>
           <div class="more-links">
-            <a class="link-btn" href="https://github.com/zaqxsw108091-create/echo-park" target="_blank" rel="noopener">소스 보기</a>
+            <a class="link-btn" href="https://github.com/zaqxsw108091-create/Exchange-rate" target="_blank" rel="noopener">소스 보기</a>
+            <a class="link-btn" href="https://zaqxsw108091-create.github.io/Exchange-rate/" target="_blank" rel="noopener">배포 페이지</a>
           </div>
         </article>
 
-        <article class="more-card">
-          <div class="more-head">
-            <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="10" height="14" rx="2"/><path d="M8 4h10a2 2 0 0 1 2 2v10"/></svg></span>
-            <h3>touch-flip</h3>
-          </div>
+        <article class="more-card vibe">
+          <h4>플랜두씨 다이어리 (plan-do-see)</h4>
+          <ul class="tags" aria-label="사용 기술"><li>JavaScript</li><li>Firebase Firestore</li></ul>
           <dl>
             <dt>상황</dt>
-            <dd>2인 로컬 멀티플레이 터치 카드 게임을 만들면서 "같은 조건에서 겨루는 공정함"이 핵심 과제였다</dd>
+            <dd>SKT 알레프 과제 6. 할 일 앱은 '했다/안 했다'만 남아서, 계획과 실제가 얼마나 달랐는지 돌아볼 수 없었다</dd>
             <dt>행동</dt>
-            <dd>입력을 하나의 진입점(InputGovernor)으로만 받게 분리해 게임 로직이 직접 터치를 건드리지 못하게 했고, 카드 크기를 화면 비율 대신 물리 크기(16mm)로 고정해 화면 크기 유불리를 없앴다. 온라인 대전은 서버가 유일한 판정 권위를 갖도록 구현했다</dd>
+            <dd>계획→할 일→실행 기록→돌아보기를 하나로 잇고, 완료 버튼을 연타하거나 다른 탭에서 눌러도 실행 기록이 1건만 남도록 서버 트랜잭션에서 한 번 더 확인하게 했다. 시간은 어디서 열든 한국 시간으로 저장한다</dd>
             <dt>결과</dt>
-            <dd>로컬·온라인 두 모드가 동작하는 버전을 완성해 GitHub에 공개했고, 핵심 로직에 유닛 테스트를 붙여 검증했다</dd>
+            <dd>Playwright 자동 테스트 35개 항목을 통과했다</dd>
+          </dl>
+          <div class="ai-note">
+            <p><b>내가 정한 것</b> Firebase 전환, 결과물·소스를 GitHub 한 곳에</p>
+            <p><b>AI가 짠 것</b> 화면·저장 코드, 자동 테스트</p>
+            <p><b>내가 고친 것</b> '없음' 입력이 막힘으로 집계되는 버그 발견</p>
+          </div>
+          <div class="more-links">
+            <a class="link-btn" href="https://github.com/zaqxsw108091-create/plan-do-see" target="_blank" rel="noopener">소스 보기</a>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="group-title">개인 프로젝트</h3>
+      <div class="more-row">
+        <article class="more-card vibe">
+          <h4>touch-flip</h4>
+          <ul class="tags" aria-label="사용 기술"><li>TypeScript</li><li>Spring Boot</li><li>WebSocket</li></ul>
+          <dl>
+            <dt>상황</dt>
+            <dd>2인 터치 카드 대전 게임을 만들면서 "같은 조건에서 겨루는 공정함"이 핵심 과제였다</dd>
+            <dt>행동</dt>
+            <dd>입력을 하나의 진입점(InputGovernor)으로만 받게 분리하고, 카드 크기를 화면 비율 대신 물리 크기(16mm)로 고정해 화면 크기 유불리를 없앴다. 온라인 대전은 Spring Boot WebSocket 서버가 유일한 판정 권위를 갖도록 구현했다</dd>
+            <dt>결과</dt>
+            <dd>로컬·온라인 두 모드가 동작하는 버전을 완성해 공개했고, 핵심 로직에 유닛 테스트를 붙여 검증했다</dd>
           </dl>
           <div class="more-links">
             <a class="link-btn" href="https://github.com/zaqxsw108091-create/touch-flip" target="_blank" rel="noopener">소스 보기</a>
           </div>
         </article>
 
-        <article class="more-card">
-          <div class="more-head">
-            <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4h4l6 5V5l-6 5H3z"/><path d="M17 9a4 4 0 0 1 0 6"/></svg></span>
-            <h3>하찮은 속보 (petty-news)</h3>
-          </div>
+        <article class="more-card vibe">
+          <h4>하찮은 속보 (petty-news)</h4>
+          <ul class="tags" aria-label="사용 기술"><li>React Native</li><li>Granite</li></ul>
           <dl>
             <dt>상황</dt>
             <dd>토스 앱인토스 8월 바이브 코딩 챌린지에 참가했다</dd>
@@ -346,49 +446,42 @@
             <a class="link-btn" href="https://github.com/zaqxsw108091-create/petty-news" target="_blank" rel="noopener">소스 보기</a>
           </div>
         </article>
+
+        <article class="more-card vibe">
+          <h4>에코 파크 (echo-park)</h4>
+          <ul class="tags" aria-label="사용 기술"><li>Phaser 3</li><li>Electron</li><li>PWA</li></ul>
+          <dl>
+            <dt>상황</dt>
+            <dd>협동 퍼즐 플랫포머를 만들고 싶었지만, 사람이 안 모여도 혼자 즐길 수 있어야 했다</dd>
+            <dt>행동</dt>
+            <dd>자신의 행동을 녹화해 루프로 재생하는 에코 시스템을 설계해, 혼자서도 과거의 나와 함께 동시 버튼 누르기 같은 협동 퍼즐을 풀 수 있게 했다</dd>
+            <dt>결과</dt>
+            <dd>1~4인(플레이어 1명 + NPC 최대 3명)으로 설치 없이 브라우저에서 바로 플레이할 수 있다</dd>
+          </dl>
+          <div class="more-links">
+            <a class="link-btn" href="https://github.com/zaqxsw108091-create/echo-park" target="_blank" rel="noopener">소스 보기</a>
+            <a class="link-btn" href="https://zaqxsw108091-create.github.io/echo-park/ECHO_PARK/game.html" target="_blank" rel="noopener">플레이하기</a>
+          </div>
+        </article>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="acc">
-      <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-make">
+      <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-strength">
         <span class="acc-plus" aria-hidden="true"></span>
-        <svg class="acc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.4 2.4-2.6-.6-.6-2.6z"/></svg>
-        만드는 방식</button></h2>
-      <div class="acc-panel" id="acc-make" aria-hidden="true"><div class="acc-inner"><div class="acc-cols">
-        <p>무엇을 만들든 계획부터 세우고 시작합니다. 이 페이지도 규칙 파일(CLAUDE.md)을 먼저 쓰고, 공개할 것과 안 할 것을 정한 뒤에 코드를 작성했습니다.</p>
-        <ol>
-          <li>계획 세우기</li>
-          <li>규칙 파일(CLAUDE.md) 쓰기</li>
-          <li>공개할 것과 안 할 것 정하기</li>
-          <li>코드 작성</li>
-        </ol>
-      </div></div></div>
-    </div>
-
-    <div class="acc">
-      <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-public">
-        <span class="acc-plus" aria-hidden="true"></span>
-        <svg class="acc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
-        공개 범위</button></h2>
-      <div class="acc-panel" id="acc-public" aria-hidden="true"><div class="acc-inner"><div class="acc-cols">
-        <div>
-          <h3>공개</h3>
-          <ul>
-            <li>이름과 소개</li>
-            <li>관심 3분야와 근거</li>
-            <li>GitHub·이메일</li>
-          </ul>
-        </div>
-        <div>
-          <h3>비공개</h3>
-          <ul>
-            <li>생년월일 — 채용 판단에 불필요</li>
-            <li>주소·전화번호 — 유포 범위 통제 불가</li>
-            <li>이지스 내부 구성 — 보안 프로그램 특성</li>
-          </ul>
-        </div>
+        <svg class="acc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
+        강점</button></h2>
+      <div class="acc-panel" id="acc-strength" aria-hidden="true"><div class="acc-inner"><div>
+        <ul class="strengths">
+          <li><b>문제를 먼저 찾는다</b>플랜두씨 다이어리를 직접 써보다가, '없음'이라고 적은 기록이 막힘으로 잘못 집계되는 버그를 찾아 입력 방식을 바꿨다</li>
+          <li><b>내 판단으로 결정한다</b>이 페이지를 만들 때 AI가 제안한 '캐릭터 하나가 안내하는 방식' 대신 분야별 전담 캐릭터 3개로 바꿨다</li>
+          <li><b>끝까지 완성한다</b>하찮은 속보를 챌린지 마감에 맞춰 앱인토스에 정식 출시했다</li>
+          <li><b>상대에 맞춰 판단한다</b>중학교 때 고등학교 진학을 고민하던 친구들의 성적·공부 방식·평소 습관을 보고 각자에게 맞는 학교를 추천해줬다</li>
+          <li><b>함께 준비하고 앞에 선다</b>고등학교 금융 발표 과제에서 조원들과 JP모건·골드만삭스·뱅크오브아메리카와 월가 자료를 함께 찾고, 발표는 내가 맡았다</li>
+          <li><b>목표를 정하면 해낸다</b>한국사능력검정시험 3급과 1급을 각각 한 번에 합격했고, 도전골든벨에 도 대표로 출전해 50문제 중 36번까지 생존했다</li>
+        </ul>
       </div></div></div>
     </div>
 
@@ -413,17 +506,43 @@
     </div>
 
     <div class="acc">
-      <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-strength">
+      <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-make">
         <span class="acc-plus" aria-hidden="true"></span>
-        <svg class="acc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>
-        강점</button></h2>
-      <div class="acc-panel" id="acc-strength" aria-hidden="true"><div class="acc-inner"><div>
-        <ul class="strengths">
-          <li>모르는 건 그 자리에서 바로 물어본다</li>
-          <li>원하는 강의나 공부는 끝까지 열심히 듣는다</li>
-          <li>계획을 세우고 시작한다</li>
-          <li>도전골든벨 도 대표로 출전해 50문제 중 36번까지 생존했다</li>
-        </ul>
+        <svg class="acc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.4 2.4-2.6-.6-.6-2.6z"/></svg>
+        만드는 방식</button></h2>
+      <div class="acc-panel" id="acc-make" aria-hidden="true"><div class="acc-inner"><div class="acc-cols">
+        <p>무엇을 만들든 계획부터 세우고 시작합니다. 이 페이지도 규칙 파일(CLAUDE.md)을 먼저 쓰고, 공개할 것과 안 할 것을 정한 뒤에 코드를 작성했습니다. 기획과 기능은 제가 정하고, 코드는 AI에게 맡긴 뒤 직접 써보며 고칩니다.</p>
+        <ol>
+          <li>계획 세우기</li>
+          <li>규칙 파일(CLAUDE.md) 쓰기</li>
+          <li>공개할 것과 안 할 것 정하기</li>
+          <li>AI와 코드 작성, 직접 써보며 수정</li>
+        </ol>
+      </div></div></div>
+    </div>
+
+    <div class="acc">
+      <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-public">
+        <span class="acc-plus" aria-hidden="true"></span>
+        <svg class="acc-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+        공개 범위</button></h2>
+      <div class="acc-panel" id="acc-public" aria-hidden="true"><div class="acc-inner"><div class="acc-cols">
+        <div>
+          <h3>공개</h3>
+          <ul>
+            <li>이름과 소개</li>
+            <li>만든 프로젝트와 소스 저장소</li>
+            <li>GitHub·이메일</li>
+          </ul>
+        </div>
+        <div>
+          <h3>비공개</h3>
+          <ul>
+            <li>생년월일 — 채용 판단에 불필요</li>
+            <li>주소·전화번호 — 유포 범위 통제 불가</li>
+            <li>이지스 운영 비밀값(JWT 시크릿·DB 비밀번호) — 저장소에도 올리지 않음</li>
+          </ul>
+        </div>
       </div></div></div>
     </div>
 
@@ -439,6 +558,23 @@
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     }
 
+    // 다크/라이트 전환
+    var themeBtn = document.getElementById('theme-btn');
+    var themeLabel = document.getElementById('theme-label');
+    function syncThemeButton() {
+      var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+      themeBtn.setAttribute('aria-pressed', String(dark));
+      themeLabel.textContent = dark ? '라이트 모드' : '다크 모드';
+    }
+    themeBtn.addEventListener('click', function () {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      syncThemeButton();
+    });
+    syncThemeButton();
+
+    // 대표 3카드 가이드
     document.querySelectorAll('.card').forEach(function (card) {
       var button = card.querySelector('.guide-btn');
       var wrapper = card.querySelector('.details-wrapper');
@@ -457,6 +593,7 @@
       });
     });
 
+    // 접이식
     document.querySelectorAll('.acc-btn').forEach(function (btn) {
       var panel = document.getElementById(btn.getAttribute('aria-controls'));
       btn.addEventListener('click', function () {
@@ -472,6 +609,7 @@
       document.documentElement.classList.toggle('motion-off', motionCheckbox.checked);
     });
 
+    // 스크롤 진행바
     var progress = document.getElementById('progress');
     function updateProgress() {
       var h = document.documentElement;
