@@ -25,26 +25,6 @@
 </script>
 <style>
   :root {
-<<<<<<< HEAD
-    --accent-game: #6b5b95;
-    --accent-game-rgb: 107, 91, 149;
-    --accent-drone: #3d5a80;
-    --accent-drone-rgb: 61, 90, 128;
-    --accent-security: #293b5f;
-    --accent-security-rgb: 41, 59, 95;
-    --accent-vibe: #146b5c;
-    --accent-vibe-rgb: 20, 107, 92;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html, body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-=======
     --bg: #f3f6fb;
     --surface: #ffffff;
     --surface-2: #eef3fa;
@@ -85,165 +65,11 @@
     --security-rgb: 169, 189, 255;
     --vibe-rgb: 111, 214, 199;
     --shadow: rgba(0, 0, 0, 0.4);
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
   }
 
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; overflow-x: hidden; }
   body {
-<<<<<<< HEAD
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: -apple-system, "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-    color: #333;
-    background: #fafaf8;
-    padding: 20px 40px;
-  }
-
-  .top-accent-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    z-index: 999;
-    background: linear-gradient(90deg, var(--accent-game), var(--accent-drone), var(--accent-security));
-    pointer-events: none;
-  }
-
-  .scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    z-index: 1000;
-    background: transparent;
-  }
-
-  .scroll-progress-fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--accent-game), var(--accent-drone), var(--accent-security));
-    transition: width 0.1s linear;
-  }
-
-  header {
-    flex: 0 0 auto;
-    position: relative;
-    padding: 14px 0 18px 0;
-    background-image:
-      radial-gradient(circle, rgba(var(--accent-drone-rgb), 0.04) 1.4px, transparent 1.4px),
-      linear-gradient(135deg, rgba(var(--accent-drone-rgb), 0.03), transparent 60%);
-    background-size: 26px 26px, 100% 100%;
-    background-position: 0 0, 0 0;
-  }
-
-  header h1 {
-    margin: 0 0 6px 0;
-    font-size: clamp(20px, 2.4vw, 30px);
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    color: #222;
-  }
-
-  header p {
-    margin: 0;
-    font-size: clamp(13px, 1.2vw, 15px);
-    color: #333;
-    max-width: 900px;
-    line-height: 1.65;
-  }
-
-  main {
-    flex: 0 1 auto;
-    display: flex;
-    flex-direction: column;
-    margin-top: 14px;
-  }
-
-  .section-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 6px 0;
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: #4b5563;
-  }
-
-  .section-label::before {
-    content: "";
-    width: 20px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent-game), var(--accent-drone), var(--accent-security));
-  }
-
-  main h2 {
-    margin: 0 0 8px 0;
-    font-size: clamp(16px, 1.8vw, 20px);
-    font-weight: 800;
-    letter-spacing: -0.01em;
-    color: #222;
-  }
-
-  .card-row {
-    flex: 0 1 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: start;
-    gap: 16px;
-  }
-
-  .card {
-    position: relative;
-    border: 1px solid transparent;
-    border-radius: 12px;
-    background-image: linear-gradient(#faf9f6, #faf9f6), linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.35), rgba(var(--card-accent-rgb), 0.1));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    padding: 14px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 0;
-    overflow: hidden;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12), inset 0 0 60px rgba(var(--card-accent-rgb), 0.07);
-  }
-
-  .card-game {
-    --card-accent-rgb: 107, 91, 149;
-    --card-accent: #6b5b95;
-  }
-
-  .card-drone {
-    --card-accent-rgb: 61, 90, 128;
-    --card-accent: #3d5a80;
-  }
-
-  .card-security {
-    --card-accent-rgb: 41, 59, 95;
-    --card-accent: #293b5f;
-  }
-
-  .proj-tag {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-    font-size: 0.92em;
-    color: var(--card-accent, #333);
-  }
-
-  .character-wrap {
-=======
     font-family: "IBM Plex Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
     color: var(--ink);
     background: var(--bg);
@@ -265,7 +91,6 @@
 
   /* 히어로: 설계도 격자 */
   header {
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
     position: relative;
     padding: 14px 18px 14px;
     margin: 0 -18px;
@@ -402,340 +227,10 @@
   .strengths li { margin: 0; }
   .strengths b { display: block; color: var(--link); }
 
-<<<<<<< HEAD
-  .card dt {
-    font-size: clamp(11px, 1vw, 12px);
-    font-weight: 700;
-    color: #222;
-    margin: 6px 0 2px 0;
-  }
-
-  .card dt:first-child {
-    margin-top: 0;
-  }
-
-  .card dd {
-    margin: 0;
-    font-size: clamp(12px, 1.1vw, 13px);
-    color: #333;
-    line-height: 1.6;
-  }
-
-  .card a,
-  .contact-line a {
-    color: #0645ad;
-  }
-
-  .source-list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .source-list li {
-    margin: 0;
-  }
-
-  .contact-line {
-    margin: 8px 0 0 0;
-    font-size: clamp(12px, 1.1vw, 14px);
-    color: #333;
-  }
-
-  .section-label-vibe {
-    margin-top: 36px;
-  }
-
-  .section-label-vibe::before {
-    background: var(--accent-vibe);
-  }
-
-  .vibe-intro {
-    margin: 0 0 14px 0;
-    font-size: clamp(12px, 1.1vw, 14px);
-    color: #333;
-    line-height: 1.6;
-    max-width: 640px;
-  }
-
-  .vibe-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-  }
-
-  .vibe-card {
-    --card-accent-rgb: var(--accent-vibe-rgb);
-    --card-accent: var(--accent-vibe);
-    position: relative;
-    border: 1px solid transparent;
-    border-radius: 12px;
-    background-image: linear-gradient(#faf9f6, #faf9f6), linear-gradient(135deg, rgba(var(--card-accent-rgb), 0.35), rgba(var(--card-accent-rgb), 0.1));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    padding: 16px 18px;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .vibe-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12), inset 0 0 60px rgba(var(--card-accent-rgb), 0.07);
-  }
-
-  .vibe-card-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-  }
-
-  .vibe-badge {
-    flex: 0 0 auto;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--card-accent);
-    background: rgba(var(--card-accent-rgb), 0.12);
-  }
-
-  .vibe-card h3 {
-    margin: 0;
-    font-size: clamp(14px, 1.4vw, 16px);
-    color: #222;
-  }
-
-  .vibe-card dl {
-    margin: 0;
-  }
-
-  .vibe-card dt {
-    font-size: clamp(11px, 1vw, 12px);
-    font-weight: 700;
-    color: #222;
-    margin: 6px 0 2px 0;
-  }
-
-  .vibe-card dt:first-child {
-    margin-top: 0;
-  }
-
-  .vibe-card dd {
-    margin: 0;
-    font-size: clamp(12px, 1.1vw, 13px);
-    color: #333;
-    line-height: 1.6;
-  }
-
-  .vibe-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
-  }
-
-  .vibe-btn {
-    display: inline-flex;
-    align-items: center;
-    padding: 6px 16px;
-    font-size: clamp(12px, 1.1vw, 13px);
-    font-weight: 600;
-    font-family: inherit;
-    color: #222;
-    background: #ffffff;
-    border: 1px solid rgba(var(--accent-vibe-rgb), 0.4);
-    border-radius: 999px;
-    text-decoration: none;
-    transition: background 0.2s ease;
-  }
-
-  .vibe-btn:hover {
-    background: rgba(var(--accent-vibe-rgb), 0.08);
-  }
-
-  .vibe-btn-alt {
-    color: var(--accent-vibe);
-    border-color: var(--accent-vibe);
-  }
-
-  footer {
-    flex: 0 0 auto;
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  details {
-    background: #faf9f6;
-    border-radius: 8px;
-    padding: 8px 16px;
-  }
-
-  summary {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    list-style: none;
-    cursor: pointer;
-    font-size: clamp(13px, 1.2vw, 15px);
-    color: #222;
-    font-weight: 700;
-  }
-
-  summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .acc-icon {
-    position: relative;
-    flex: 0 0 auto;
-    width: 14px;
-    height: 14px;
-    transition: transform 0.25s ease;
-  }
-
-  .acc-icon::before,
-  .acc-icon::after {
-    content: "";
-    position: absolute;
-    background: #222;
-  }
-
-  .acc-icon::before {
-    top: 6px;
-    left: 0;
-    width: 14px;
-    height: 2px;
-  }
-
-  .acc-icon::after {
-    top: 0;
-    left: 6px;
-    width: 2px;
-    height: 14px;
-  }
-
-  details[open] .acc-icon {
-    transform: rotate(45deg);
-  }
-
-  .acc-title-icon {
-    flex: 0 0 auto;
-    display: inline-flex;
-    color: #4b5563;
-  }
-
-  .acc-panel {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease;
-  }
-
-  .acc-panel.expanded {
-    grid-template-rows: 1fr;
-  }
-
-  .acc-panel-inner {
-    overflow: hidden;
-    min-height: 0;
-  }
-
-  .acc-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 28px;
-  }
-
-  @media (max-width: 640px) {
-    .acc-cols {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  details p {
-    margin: 8px 0 0 0;
-    font-size: clamp(12px, 1.1vw, 14px);
-    color: #333;
-    line-height: 1.65;
-  }
-
-  details ul {
-    margin: 6px 0 10px 0;
-    padding-left: 20px;
-  }
-
-  details li {
-    font-size: clamp(12px, 1.1vw, 14px);
-    color: #333;
-    line-height: 1.6;
-    margin-bottom: 2px;
-  }
-
-  details .label {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 700;
-    color: #222;
-    margin: 8px 0 2px 0;
-  }
-
-  details .label svg {
-    flex: 0 0 auto;
-    color: #4b5563;
-  }
-
-  details .label:first-of-type {
-    margin-top: 8px;
-  }
-
-  .motion-toggle {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: clamp(12px, 1.1vw, 14px);
-    color: #333;
-  }
-
-  html.motion-off .character-wrap,
-  html.motion-off .character-spin,
-  html.motion-off .speech-bubble,
-  html.motion-off .details-wrapper,
-  html.motion-off .card,
-  html.motion-off .vibe-card,
-  html.motion-off .vibe-btn,
-  html.motion-off .acc-icon,
-  html.motion-off .acc-panel,
-  html.motion-off .scroll-progress-fill {
-    transition: none;
-  }
-=======
   .motion-toggle { display: flex; align-items: center; gap: 6px; font-size: 14px; margin: 8px 0 0 0; }
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
 
   html.motion-off *, html.motion-off *::before, html.motion-off *::after { transition: none !important; }
   @media (prefers-reduced-motion: reduce) {
-<<<<<<< HEAD
-    .character-wrap,
-    .character-spin,
-    .speech-bubble,
-    .details-wrapper,
-    .card,
-    .vibe-card,
-    .vibe-btn,
-    .acc-icon,
-    .acc-panel,
-    .scroll-progress-fill {
-      transition: none;
-    }
-=======
     *, *::before, *::after { transition: none !important; }
   }
   @media (max-width: 1000px) { .more-row { grid-template-columns: repeat(2, 1fr); } }
@@ -744,7 +239,6 @@
     header { margin: 0 -8px; padding: 12px 8px; }
     .card-row, .more-row, .acc-cols, .strengths { grid-template-columns: 1fr; }
     .acc-inner > div { padding-left: 16px; }
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
   }
 </style>
 </head>
@@ -752,13 +246,7 @@
   <div class="top-accent-bar" aria-hidden="true"></div>
   <div class="scroll-progress" id="progress" aria-hidden="true"></div>
 
-  <div class="top-accent-bar" aria-hidden="true"></div>
-  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-fill"></div></div>
-
   <header>
-<<<<<<< HEAD
-    <h1>윤대영 · 스스로 선택한 것에만 불이 붙는 사람</h1>
-=======
     <div class="hero-top">
       <h1>윤대영 · 스스로 선택한 것에만 불이 붙는 사람</h1>
       <button type="button" class="theme-btn" id="theme-btn" aria-pressed="false">
@@ -766,7 +254,6 @@
         <span id="theme-label">다크 모드</span>
       </button>
     </div>
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
     <p>흥미로운 걸 좋아하고, 남들과 다른 관점을 가지고 있어 직접 만들어보는 사람입니다. 게임·드론·보안을 만들어보며 개발을 배웠고, 지금은 Java 백엔드로 기초를 다지고 있습니다. 이 페이지는 저를 채용할지 검토하는 분께 제가 무엇을 만들어봤는지 보여주기 위한 곳입니다.</p>
     <p class="contact-line">
       <a href="https://github.com/zaqxsw108091-create" target="_blank" rel="noopener">GitHub</a>
@@ -775,14 +262,9 @@
   </header>
 
   <main>
-    <p class="section-label">PROJECTS</p>
     <h2>무엇을 만드나요</h2>
     <div class="card-row">
-<<<<<<< HEAD
-      <article class="card card-game">
-=======
       <article class="card game">
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
         <div class="character-wrap">
           <div class="character-spin"><span class="char-tile"><img src="game.png" alt="" aria-hidden="true"></span></div>
           <div class="speech-bubble" aria-hidden="true">제가 만든 게임들을 소개할게요</div>
@@ -795,7 +277,7 @@
           <div class="details-inner">
             <dl>
               <dt>상황</dt>
-              <dd>C를 배운 게 게임을 만들고 싶어서였다. 레이싱 게임을 시작으로, 수업 지도를 받으며 <span class="proj-tag">2DCombat</span>을, 그 뒤엔 좋아하던 게임의 감각을 살려 레이캐스팅 FPS <span class="proj-tag">OVER_SHOT</span>을 만들었다</dd>
+              <dd>C를 배운 게 게임을 만들고 싶어서였다. 레이싱 게임을 시작으로, 수업 지도를 받으며 2DCombat을, 그 뒤엔 좋아하던 게임의 감각을 살려 레이캐스팅 FPS OVER_SHOT을 만들었다</dd>
               <dt>행동</dt>
               <dd>3개를 순서대로 만들며 배운 걸 다음 프로젝트에 쌓아갔고, 지금은 Java로 방향을 옮겨 기초를 다지는 중이다</dd>
               <dt>결과</dt>
@@ -813,11 +295,7 @@
         </div>
       </article>
 
-<<<<<<< HEAD
-      <article class="card card-drone">
-=======
       <article class="card drone">
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
         <div class="character-wrap">
           <div class="character-spin"><span class="char-tile"><img src="drone.png" alt="" aria-hidden="true"></span></div>
           <div class="speech-bubble" aria-hidden="true">드론 시뮬레이터 이야기예요</div>
@@ -832,7 +310,7 @@
               <dt>상황</dt>
               <dd>DJI 매빅을 직접 날리면서 드론의 움직임에 관심이 생겼지만, 실제 기체로 이것저것 시도해보기엔 부담이 컸다</dd>
               <dt>행동</dt>
-              <dd>비행 거동을 코드로 확인해보려고 <span class="proj-tag">DRSIM_K</span> 시뮬레이터를 만들었다</dd>
+              <dd>비행 거동을 코드로 확인해보려고 DRSIM_K 시뮬레이터를 만들었다</dd>
               <dt>결과</dt>
               <dd>메인 화면에서 드론과 미션을 고르면 해당 미션이 시작된다</dd>
               <dt>소스</dt>
@@ -842,11 +320,7 @@
         </div>
       </article>
 
-<<<<<<< HEAD
-      <article class="card card-security">
-=======
       <article class="card security">
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
         <div class="character-wrap">
           <div class="character-spin"><span class="char-tile"><img src="security.png" alt="" aria-hidden="true"></span></div>
           <div class="speech-bubble" aria-hidden="true">막는 쪽을 만들어봤어요</div>
@@ -861,104 +335,13 @@
               <dt>상황</dt>
               <dd>해킹 대회 영상을 보다 흥미가 생겼는데 공격 기술은 아직 모른다. 대신 막는 쪽 구현이 궁금했다</dd>
               <dt>행동</dt>
-<<<<<<< HEAD
-              <dd>관리자 계정에서 일반 계정의 로그인 실패 횟수와 IP를 확인하고 차단하는 기능(<span class="proj-tag">이지스</span>)을 만들었다</dd>
-=======
               <dd>로그인 실패를 IP·계정별로 세어 자동으로 차단·잠그고, 관리자 화면에서 실패 횟수를 확인하고 직접 차단·해제할 수 있는 방어 시스템(이지스)을 만들었다</dd>
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
               <dt>결과</dt>
               <dd>실패가 쌓인 IP가 목록에 뜨고, 차단하면 그 IP의 로그인이 막히는 것을 확인했다. 코드를 올릴 때마다 GitHub Actions로 빌드와 테스트가 자동으로 돈다</dd>
               <dt>소스</dt>
               <dd><a href="https://github.com/zaqxsw108091-create/aegis" target="_blank" rel="noopener">aegis</a></dd>
             </dl>
           </div>
-        </div>
-      </article>
-
-    </div>
-
-    <p class="section-label section-label-vibe">MORE PROJECTS</p>
-    <h2>더 만든 것들</h2>
-    <p class="vibe-intro">위 3개 외에도 같은 방식으로 계획하고 완성까지 끝낸 프로젝트들입니다.</p>
-    <div class="vibe-row">
-      <article class="vibe-card">
-        <div class="vibe-card-head">
-          <span class="vibe-badge" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="18" height="18" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="2" y1="8.5" x2="22" y2="8.5" stroke="currentColor" stroke-width="1.5"/><circle cx="5" cy="6.25" r="0.7" fill="currentColor"/><circle cx="7.5" cy="6.25" r="0.7" fill="currentColor"/></svg>
-          </span>
-          <h3>이 페이지 (about-me)</h3>
-        </div>
-        <dl>
-          <dt>상황</dt>
-          <dd>SKT 알레프 과제로 자기소개 페이지 제작을 지시받았다</dd>
-          <dt>행동</dt>
-          <dd>CLAUDE.md로 규칙 파일을 먼저 쓰고, 공개 범위를 직접 정의한 뒤 바이브 코딩으로 구현했다. 지금은 ZTNA 방어 모듈(<span class="proj-tag">BYTE BACK</span>)을 진행 중이다</dd>
-          <dt>결과</dt>
-          <dd>배포를 마쳤고, 과제 제출·승인까지 완료됐다</dd>
-        </dl>
-        <div class="vibe-links">
-          <a class="vibe-btn" href="https://github.com/zaqxsw108091-create/about-me" target="_blank" rel="noopener">소스 보기</a>
-          <a class="vibe-btn vibe-btn-alt" href="https://zaqxsw108091-create.github.io/about-me/" target="_blank" rel="noopener">배포 페이지</a>
-        </div>
-      </article>
-
-      <article class="vibe-card">
-        <div class="vibe-card-head">
-          <span class="vibe-badge" aria-hidden="true">
-            <svg viewBox="0 0 16 16" width="18" height="18" focusable="false"><path d="M13 8A5 5 0 1 1 8 3" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 1l2 2-2 2" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-          </span>
-          <h3>echo-park (에코 파크)</h3>
-        </div>
-        <dl>
-          <dt>상황</dt>
-          <dd>1~6인 협동 퍼즐 플랫포머를 만들고 싶었지만, 사람이 안 모여도 혼자 즐길 수 있어야 했다</dd>
-          <dt>행동</dt>
-          <dd>자신의 행동을 녹화해 루프로 재생하는 <span class="proj-tag">EchoRec</span> 시스템을 설계해, 혼자서도 과거의 나(에코)와 함께 동시 버튼 누르기 같은 협동 퍼즐을 풀 수 있게 만들었다. Phaser 3 + Electron + PWA로 웹·데스크탑·모바일을 하나의 코드베이스로 커버했다</dd>
-          <dt>결과</dt>
-          <dd>GitHub에 공개했고, 현재는 싱글플레이(+에코 협동) 방식으로 플레이 가능하다</dd>
-        </dl>
-        <div class="vibe-links">
-          <a class="vibe-btn" href="https://github.com/zaqxsw108091-create/echo-park" target="_blank" rel="noopener">소스 보기</a>
-        </div>
-      </article>
-
-      <article class="vibe-card">
-        <div class="vibe-card-head">
-          <span class="vibe-badge" aria-hidden="true">
-            <svg viewBox="0 0 16 16" width="18" height="18" focusable="false"><rect x="2" y="4" width="8" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><rect x="6" y="2" width="8" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
-          </span>
-          <h3>touch-flip</h3>
-        </div>
-        <dl>
-          <dt>상황</dt>
-          <dd>2인 로컬 멀티플레이 터치 카드 게임을 만들면서, "같은 조건에서 겨루는 공정함"이 핵심 과제였다</dd>
-          <dt>행동</dt>
-          <dd>입력을 하나의 진입점(<span class="proj-tag">InputGovernor</span>)으로만 받게 분리해 게임 로직이 직접 터치를 건드리지 못하게 했고, 카드 크기를 화면 비율 대신 물리 크기(16mm)로 고정해 화면 크기에 따른 유불리를 없앴다. 온라인 대전은 서버가 유일한 판정 권위를 갖도록 구현했다</dd>
-          <dt>결과</dt>
-          <dd>로컬·온라인 두 모드 모두 동작하는 버전을 완성해 GitHub에 공개했고, 핵심 로직에 유닛 테스트를 붙여 검증했다</dd>
-        </dl>
-        <div class="vibe-links">
-          <a class="vibe-btn" href="https://github.com/zaqxsw108091-create/touch-flip" target="_blank" rel="noopener">소스 보기</a>
-        </div>
-      </article>
-
-      <article class="vibe-card">
-        <div class="vibe-card-head">
-          <span class="vibe-badge" aria-hidden="true">
-            <svg viewBox="0 0 16 16" width="18" height="18" focusable="false"><path d="M2 6v4h2l6 3V3L4 6H2Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M11 5a4 4 0 0 1 0 6" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
-          </span>
-          <h3>하찮은 속보 (petty-news)</h3>
-        </div>
-        <dl>
-          <dt>상황</dt>
-          <dd>토스 앱인토스 8월 바이브 코딩 챌린지에 참가했다</dd>
-          <dt>행동</dt>
-          <dd>Granite/React Native 프레임워크로 제작해 .ait 파일로 빌드했다</dd>
-          <dt>결과</dt>
-          <dd>2026-08-26 <span class="proj-tag">20260825-10</span> 버전으로 앱인토스에 정식 출시를 완료했다</dd>
-        </dl>
-        <div class="vibe-links">
-          <a class="vibe-btn" href="https://github.com/zaqxsw108091-create/petty-news" target="_blank" rel="noopener">소스 보기</a>
         </div>
       </article>
     </div>
@@ -1085,91 +468,6 @@
   </main>
 
   <footer>
-<<<<<<< HEAD
-    <details class="accordion">
-      <summary>
-        <span class="acc-icon" aria-hidden="true"></span>
-        <span class="acc-title-icon" aria-hidden="true">
-          <svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><path d="M10.5 2.5a3 3 0 0 0-3.9 3.9L2 11v3h3l4.6-4.6a3 3 0 0 0 3.9-3.9l-2 2-1.5-.5-.5-1.5 2-2Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-        </span>
-        만드는 방식
-      </summary>
-      <div class="acc-panel">
-        <div class="acc-panel-inner">
-          <p>무엇을 만들든 계획부터 세우고 시작합니다. 이 페이지도 규칙 파일(CLAUDE.md)을 먼저 쓰고, 공개할 것과 안 할 것을 정한 뒤에 코드를 작성했습니다.</p>
-        </div>
-      </div>
-    </details>
-
-    <details class="accordion">
-      <summary>
-        <span class="acc-icon" aria-hidden="true"></span>
-        <span class="acc-title-icon" aria-hidden="true">
-          <svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><rect x="3" y="7" width="10" height="7" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
-        </span>
-        공개 범위
-      </summary>
-      <div class="acc-panel">
-        <div class="acc-panel-inner">
-          <div class="acc-cols">
-            <div class="acc-col">
-              <p class="label">공개</p>
-              <ul>
-                <li>이름과 소개</li>
-                <li>관심 3분야와 근거</li>
-                <li>GitHub·이메일</li>
-              </ul>
-            </div>
-            <div class="acc-col">
-              <p class="label">비공개</p>
-              <ul>
-                <li>생년월일 — 채용 판단에 불필요</li>
-                <li>주소·전화번호 — 유포 범위 통제 불가</li>
-                <li>이지스 내부 구성 — 보안 프로그램 특성</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </details>
-
-    <details class="accordion">
-      <summary>
-        <span class="acc-icon" aria-hidden="true"></span>
-        <span class="acc-title-icon" aria-hidden="true">
-          <svg viewBox="0 0 16 16" width="14" height="14" focusable="false"><ellipse cx="8" cy="6" rx="5.5" ry="4" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="4" cy="12" r="1" fill="currentColor"/><circle cx="2" cy="14.5" r="0.6" fill="currentColor"/></svg>
-        </span>
-        일하는 방식
-      </summary>
-      <div class="acc-panel">
-        <div class="acc-panel-inner">
-          <div class="acc-cols">
-            <div class="acc-col">
-              <p class="label">몰입할 때</p>
-              <p>흥미로운 것, 스스로 원해서 하는 일</p>
-              <p class="label">힘 빠질 때</p>
-              <p>자신의 방식을 강요받거나 억지로 해야 할 때</p>
-            </div>
-            <div class="acc-col">
-              <p class="label">
-                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M9 1 3 9h4l-1 6 6-8H8l1-6Z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
-                강점
-              </p>
-              <ul>
-                <li>모르는 건 그 자리에서 바로 물어본다</li>
-                <li>원하는 강의나 공부는 끝까지 열심히 듣는다</li>
-                <li>계획을 세우고 시작한다</li>
-                <li>도전골든벨 도 대표로 출전해 50문제 중 36번까지 생존했다</li>
-              </ul>
-              <p class="label">핵심 가치</p>
-              <p>희망(할 수 있다는 믿음) · 신뢰 · 질서</p>
-            </div>
-          </div>
-          <p>궁금한 게 많고, 새로운 방식에 열려 있는 걸 좋아합니다.</p>
-        </div>
-      </div>
-    </details>
-=======
     <div class="acc">
       <h2><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-strength">
         <span class="acc-plus" aria-hidden="true"></span>
@@ -1247,7 +545,6 @@
         </div>
       </div></div></div>
     </div>
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
 
     <p class="motion-toggle">
       <input type="checkbox" id="motion-off">
@@ -1311,61 +608,6 @@
     motionCheckbox.addEventListener('change', function () {
       document.documentElement.classList.toggle('motion-off', motionCheckbox.checked);
     });
-<<<<<<< HEAD
-
-    function isMotionReducedGlobal() {
-      return document.documentElement.classList.contains('motion-off') ||
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    }
-
-    document.querySelectorAll('.accordion').forEach(function (det) {
-      var summary = det.querySelector('summary');
-      var panel = det.querySelector('.acc-panel');
-      var animating = false;
-
-      summary.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (animating) return;
-
-        var isOpen = det.hasAttribute('open');
-
-        if (isMotionReducedGlobal()) {
-          det.open = !isOpen;
-          panel.classList.toggle('expanded', !isOpen);
-          return;
-        }
-
-        animating = true;
-
-        if (!isOpen) {
-          det.open = true;
-          requestAnimationFrame(function () {
-            panel.classList.add('expanded');
-          });
-          setTimeout(function () { animating = false; }, 320);
-        } else {
-          panel.classList.remove('expanded');
-          setTimeout(function () {
-            det.open = false;
-            animating = false;
-          }, 320);
-        }
-      });
-    });
-
-    var scrollProgressFill = document.querySelector('.scroll-progress-fill');
-    function updateScrollProgress() {
-      var scrollTop = window.scrollY || document.documentElement.scrollTop;
-      var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      scrollProgressFill.style.width = pct + '%';
-    }
-    window.addEventListener('scroll', updateScrollProgress, { passive: true });
-    window.addEventListener('resize', updateScrollProgress);
-    updateScrollProgress();
-  </script>
-=======
->>>>>>> 724ccdd4c0062464426b37e17084b846d4670f2e
 
     // 스크롤 진행바
     var progress = document.getElementById('progress');
